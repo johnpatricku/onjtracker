@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OJTracker - Login</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- Load Supabase FIRST -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="logo">
+                <div class="logo-icon">⏰</div>
+                <h1>OJTracker</h1>
+                <p>On-the-Job Training Management System</p>
+            </div>
+            
+            <form id="authForm" class="auth-form">
+                <div id="signupFields" class="signup-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select id="role" name="role" required>
+                            <option value="">Select your role</option>
+                            <option value="student">Student</option>
+                            <option value="supervisor">Supervisor</option>
+                            <option value="coordinator">Coordinator</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <input type="text" id="department" name="department" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" required>
+                        <button type="button" id="togglePassword" class="toggle-password">👁️</button>
+                    </div>
+                </div>
+                
+                <button type="submit" id="submitBtn" class="submit-btn">Sign In</button>
+            </form>
+            
+            <div class="auth-toggle">
+                <button type="button" id="toggleAuth" class="toggle-btn">
+                    Need an account? Sign up
+                </button>
+            </div>
+            
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+    
+    <!-- Load your scripts AFTER Supabase -->
+    <script src="supabase-client.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

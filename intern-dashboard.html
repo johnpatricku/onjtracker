@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - OJTracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo-icon">⏰</div>
+                <h1>OJTracker</h1>
+                <span class="role-badge">Student</span>
+            </div>
+            <div class="header-right">
+                <span id="userName">Welcome, User</span>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+            <button class="tab-btn" data-tab="rate-supervisor">Rate Supervisor</button>
+            <button class="tab-btn" data-tab="my-ratings">My Ratings</button>
+            <button class="tab-btn" data-tab="profile">Profile</button>
+        </div>
+
+        <div id="dashboard" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Active Assignments</h3>
+                    <div class="stat-number" id="assignmentCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Ratings Given</h3>
+                    <div class="stat-number" id="ratingsCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Department</h3>
+                    <div class="stat-text" id="userDepartment">-</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>My Supervisors</h2>
+                <div id="supervisorsList" class="supervisors-list">
+                    <p class="no-data">No active assignments</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="rate-supervisor" class="tab-content">
+            <div class="card">
+                <h2>Rate Your Supervisor</h2>
+                <form id="ratingForm" class="rating-form">
+                    <div class="form-group">
+                        <label for="supervisorSelect">Select Supervisor</label>
+                        <select id="supervisorSelect" required>
+                            <option value="">Choose a supervisor to rate</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <div class="star-rating" id="starRating">
+                            <span class="star" data-rating="1">⭐</span>
+                            <span class="star" data-rating="2">⭐</span>
+                            <span class="star" data-rating="3">⭐</span>
+                            <span class="star" data-rating="4">⭐</span>
+                            <span class="star" data-rating="5">⭐</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedback">Feedback (Optional)</label>
+                        <textarea id="feedback" rows="4" placeholder="Share your thoughts about your supervisor's guidance and support..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Rating</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="my-ratings" class="tab-content">
+            <div class="card">
+                <h2>My Rating History</h2>
+                <div id="ratingsHistory" class="ratings-list">
+                    <p class="no-data">No ratings submitted yet</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="profile" class="tab-content">
+            <div class="card">
+                <h2>Profile Information</h2>
+                <div class="profile-grid">
+                    <div class="profile-item">
+                        <label>Full Name</label>
+                        <span id="profileName">-</span>
+                    </div>
+                    <div class="profile-item">
+                        <label>Email</label>
+                        <span id="profileEmail">-</span>
+                    </div>
+                    <div class="profile-item">
+                        <label>Role</label>
+                        <span id="profileRole">-</span>
+                    </div>
+                    <div class="profile-item">
+                        <label>Department</label>
+                        <span id="profileDepartment">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="message" class="message"></div>
+
+    <script src="supabase-client.js"></script>
+    <script src="intern-script.js"></script>
+</body>
+</html>
